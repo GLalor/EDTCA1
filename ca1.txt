@@ -1,0 +1,157 @@
+# Section 1
+
+std = standard deviation
+
+1.   a. age - numeric
+	job - nominal
+	marital - nominal
+	education -  nominal
+ 	housing - nominal
+	loan - nominal
+	contact - nominal
+	month - nominal
+	day_of_week - nominal
+	duration - numeric
+	campaign - numeric
+	pdays - numeric
+	previous - numeric
+	poutcome - nominal
+	cons.price.idx - numeric
+	cons.conf.idx - numeric
+	euribor3m - numeric
+	nr.employed - numeric
+
+     b. age - 0.1642036%
+	job - 1.313629%
+	marital - 0.3284072%
+	education -  5.254516%
+ 	housing - 2.791461%
+	loan - 2.791461%
+	contact - 0%
+	month - 0%
+	day_of_week - 0%
+	duration - 0%
+	campaign - 0%
+	pdays - 0%
+	previous - 0%
+	poutcome - 0%
+	cons.price.idx - 0.492610%
+	cons.conf.idx - 0.4378763%
+	euribor3m - 0%
+	nr.employed - 0%
+
+     c. age - max = 88, min = 18, mean = 39.93, mode = 32, median = 38, std = 10.47228
+	job - mode = admin
+	marital - mode = married
+	education - mode = university.degree28
+ 	housing - mode = yes
+	loan - mode = no
+	contact - mode = cellular
+	month - mode = may
+	day_of_week - mode = thu
+	duration - max = 3253.0, min = 4.0, mean = 257.1, mode = 73, median = 181.0, std = 257.175
+	campaign - max = 22, min = 1, mean = 2.552, mode = 1, median = 2, std = 2.467728
+	pdays - max = 999, min = 0, mean = 959.9, mode = 999, median = 999, std = 193.3229
+	previous - max = 6.0000 , min = 0, mean = 0.1921, mode = 0, median = 0, std = 0.560456
+	poutcome - mode = nonexistent
+	cons.price.idx - max = 95, min = 92.20, mean = 93.60, mode = 93.994, median = 93.92, std = 0.5753015
+	cons.conf.idx - max = -26.90, min =-50.80, mean = -40.63, mode = -36.4, median = -41.80, std = 4.549258
+	euribor3m - max = 5.045, min = 0.635, mean = 3.618, mode = 4.857, median = 4.857, std = 1.736966
+	nr.employed - max = 5228, min = 4964, mean = 5166, mode = 5228.1, median = 5191, std = 73.99906
+
+     d. Using Shapiro wilks test for normaliy
+	age - p-value = 0.00000000000000022, w = 0.95288 = not normal
+	duration - p-value = 0.00000000000000022, w = 0.95288 = not normal
+	campaign - p-value = 0.00000000000000022, w = 0.639 = not normal
+	pdays - p-value = 0.00000000000000022, w = 0.19157 = not normal
+	previous - p-value = 0.00000000000000022, w = 0.38442 = not normal
+	cons.price.idx - p-value = 0.00000000000000022, w = 0.93163 = not normal
+	cons.conf.idx - p-value = 0.00000000000000022, w = 0.92268 = not normal
+	euribor3m - p-value = 0.00000000000000022, w = 0.68409 = not normal
+	nr.employed - p-value = 0.00000000000000022, w = 0.78606 = not normal
+	0.00000000000000022 = 2.2e-16
+	**NULL/NA values affect this?**
+	The Shapiro-Wilks test for normality is a normality test designed
+	to detect all departures from normality.  The test rejects the hypothesis
+	of normality when the p-value is less than or equal to 0.05.  Failing the
+	normality test allows you to state with 95% confidence the data does
+	not fit the normal distribution.  In other words regarding the null hypothesis
+	of shapiro.test, a p-value <= 0.05 would reject the null hypothesis that
+	the samples come from normal distribution.
+
+     e. age - skewness = 0.5515816, type = right
+	duration - skewness = 0.8878903, type = right
+	campaign - skewness = 0.6713927, type = right
+	pdays - skewness = -0.6074728, type = left
+	previous - skewness = 1.028367, type = right
+	cons.price.idx - skewness = -1.650206, type = left
+	cons.conf.idx - skewness =  0.7731386, type = right
+	euribor3m - skewness = -2.139853, type = left
+	nr.employed - skewness =  -1.024056, type = left	
+
+     f.
+	                       age|   duration|   campaign|      pdays|   previous|cons.price.idx| cons.conf.idx|  euribor3m| nr.employed|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	           age|           | 0.05092651|0.009360903|-0.05165584| 0.07009161|   0.009423496|    0.07293301|-0.01758317| -0.03878907| 
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	      duration| 0.05092651|           | -0.1065406| -0.0784778| 0.04562788|    0.02987555|   -0.02512887|-0.04008613| -0.06332767|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	      campaign|0.009360903| -0.1065406|           | 0.06938422|-0.09497193|     0.1366676|   0.003685311|  0.1674055|   0.1755955|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	         pdays|-0.05165584| -0.0784778| 0.06938422|           | -0.6031517|    0.03839727|   -0.05826343|  0.2994986|   0.3834322|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	      previous| 0.07009161| 0.04562788|-0.09497193| -0.6031517|           |    -0.1128567|   -0.07672111| -0.4705007|  -0.5373021|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	cons.price.idx|0.009423496| 0.02987555|  0.1366676| 0.03839727| -0.1128567|              |    0.09847915|  0.6315915|   0.4245895|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	 cons.conf.idx| 0.07293301|-0.02512887|0.003685311|-0.05826343|-0.07672111|    0.09847915|              |  0.3460003|   0.1739799|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	     euribor3m|-0.01758317|-0.04008613|  0.1674055|  0.2994986| -0.4705007|     0.6315915|     0.3460003|           |   0.9384368|
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+	   nr.employed|-0.03878907|-0.06332767|  0.1755955|  0.3834322| -0.5373021|     0.4245895|     0.1739799|  0.9384368|            |
+	              +-----------+-----------+-----------+-----------+-----------+--------------+--------------+-----------+------------+
+
+Q3
+	contact has cell and cellular duplicate entry
+
+
+
+
+Q4	age - IQRQ1 = 32 - 1.5(15) = 9.5, Q3 = 47 + 1.5(15) = 69.5 
+		outliers = 24 over 69.5
+		zscore 20 are over 3
+	job - nominal
+	marital - nominal
+	education -  nominal
+ 	housing - nominal
+	loan - nominal
+	contact - nominal
+	month - nominal
+	day_of_week - nominal
+	duration - IQR Q1 = 101.5 - 1.5(218) = -225.5, Q3 = 319.5  + 1.5(218) = 646.5 
+		outliers = 129 over 646.5
+		zscore 37 are over 3
+	campaign - IQR Q1 = 1 - 1.5(2) = -2, Q3 = 3  + 1.5(2) = 6
+		outliers = 110 over 6
+		zscore 50 are over 3
+	pdays - IQR Q1 = 999 - 1.5(0) = 999, Q3 = 999  + 1.5(0) = 999
+		outliers = 72 under 999
+		zscore 72 are under -3
+	previous - IQR Q1 = 0 - 1.5(0) = 0, Q3 = 0 + 1.5(0) = 0
+		outliers = 260 over 0
+		zscore 54 are over 3
+	poutcome - nominal
+	cons.price.idx - IQR Q1 = 93.08 - 1.5(0.91) = 91.75, Q3 = 93.99 + 1.5(0.91) = 95.355
+		outliers = 1 over 95.355
+		zscore 1 are over 3
+	cons.conf.idx - IQR Q1 = -42.70 - 1.5(6.3) = -52.15, IQR Q3 = -36.40 + 1.5(6.3) = -26.95
+		outliers = 13 over -26.95
+		zscore 13 are over 3
+	euribor3m - IQR Q1 = 1.334 - 1.5(3.627) = -4.1065, IQR Q3 = 4.961 + 1.5(3.627) = 10.4015
+		outliers = 0 for both
+		zscore 0 for both
+	nr.employed - IQR Q1 = 5099 - 1.5(189) = 4815.5, IQR Q3 = 5228 + 1.5(189) = 5511.5
+		outliers = 0 for both
+		zscore 0 for both
+	
+
